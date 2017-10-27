@@ -1,0 +1,73 @@
+{% if not error_msg %}
+<style type="text/css">
+    .test_button{
+/*        font-size: {{ test_button_font_size  }}px !important;
+        height: {{ test_button_height }}px !important;*/
+        color: {{ test_button_color }} !important;
+        background-color: {{ test_button_back_color }} !important;
+    }
+</style>
+<div class="mettl_block">
+    {% if schedule_data %}
+    <div class="container">
+        <div class="instructions">
+            {{ instructions | safe }}
+        </div>
+        {% for key, schedule in schedule_data.items %}
+            <div class="result-card" id="{{ key }}">
+                <div class="attempts" title="Attempt">
+                    {{ schedule.attempt_no }}
+                </div>
+                <div class="details">
+                    <h2>{{ schedule.schedule_name }} -</h2>
+                    <h2 class="status {% if schedule.status == 'Completed' %}completed {% elif schedule.status == 'ToBeTaken' %} to-be-taken {%else%} in-progress {% endif %}" title="{%if schedule.finish_mode %} {{schedule.finish_mode}} {% endif %}">{{ schedule.status }}</h2>
+                    <br>
+                    <h4 class="marks">
+                        <b>Marks :</b> {%if schedule.marks > 0 %} {{schedule.marks}}/{{schedule.max_marks}} {% else %} 0 {% endif %},
+                    </h4>
+                    <h4 class="time_taken">
+                        <b>Time Taken : </b> {{schedule.time_taken}}
+                    </h4> <br>
+                    <h4 class="finish_time">
+                        {% if schedule.last_response_time %}
+                            <b>Last Response Time :</b> {{ schedule.last_response_time }}
+                        {% else %}
+                            <b>Finish Time :</b> {{schedule.finish_time}}
+                        {% endif %}
+                    </h4>
+                </div>
+                {% if schedule.status == 'Completed' %}
+                    <a href="{{ schedule.pdf_report }}" class="resume-test btn btn-pink">
+                         Download Report 
+                    </a>
+                {% elif schedule.status == 'Archive' %}
+                                         
+                {% elif schedule.status == 'ToBeTaken' %} 
+                    {% if schedule.can_start_test %}
+                        <a href="{{ schedule.start_test }}" onclick="popup(this.href)" target="_blank" class="resume-test btn btn-blue test_button">
+                            {{ test_button_label }}
+                        </a>
+                    {% else %}
+                        <a href="#" disabled onclick="popup(this.href)" target="_blank" class="resume-test btn btn-blue test_button">
+                            {{ test_button_label }}
+                        </a>
+                    {% endif %}
+                {%else%} 
+                    <a href="{{ schedule.resume_test }}" onclick="popup(this.href)" target="_blank" class="resume-test btn btn-blue">
+                        Resume Test
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+    <div class="container">
+        <h2>No Test Schedule Available Now</h2>
+    </div>
+    {% endif %}
+    </div>
+</div>
+{% else %}
+<div class="mettl_block">
+    <h2>{{ error_msg }}</h2>
+</div>
+{% endif %}

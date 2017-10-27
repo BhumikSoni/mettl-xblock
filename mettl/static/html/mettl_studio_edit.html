@@ -1,0 +1,58 @@
+<div class="wrapper-comp-settings is-active editor-with-buttons" id="settings-tab">
+    <ul class="list-input settings-list">
+    {% if not error_msg %}
+        <li class="field comp-setting-entry is-set">
+            <div class="wrapper-comp-setting">
+                <label class="label setting-label" for="assessment_id">Assessment ID</label>
+                <select id="assessment_id" name="assessment_id">
+                {% if assessments %}
+                    {% for key, assessment in assessments.items %}
+                        {% if current_assessment_id and key == current_assessment_id %}
+                            <option value="{{ key }}" selected="selected">{{ assessment }}</option>
+                        {% else %}
+                            <option value="{{ key }}">{{ assessment }}</option>   
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </select>
+            </div>
+            <span class="tip setting-help">Select one of the above assessment id.</span>
+        </li>
+        {% for field, value, input_type in fields %}
+        <li class="field comp-setting-entry metadata_entry">
+          <div class="wrapper-comp-setting">
+            <label class="label setting-label" 
+              for="{{ field.name }}_input">{{ field.display_name }}</label>
+            <input class="input setting-input" type="{{ input_type }}" 
+                   id="{{ field.name }}_input" name="{{ field.name }}" 
+                   value="{{ value }}" {% if field.values %} min="{{ field.values.min }}" step="{{ field.values.step }}" {% endif%}/>
+          </div>
+          <span class="tip setting-help">{{ field.help }}</span>
+        </li>
+        {% endfor %}
+        <li class="field comp-setting-entry metadata_entry">
+          <div class="wrapper-comp-setting">
+            <a href="#" class="test_button" style="padding: 10px 15px;">Click here to start the test</a>
+          </div>
+          <span class="tip setting-help">Button will appear same like above in LMS</span>
+        </li>
+    {% else %}
+        <li class="field comp-setting-entry metadata_entry">
+            <h1>{{ error_msg }}</h1>
+        </li>
+    {% endif %}
+    </ul>
+    <div class="xblock-actions">
+        <span class="xblock-editor-error-message"></span>
+        <ul>
+        {% if not error_msg %}
+            <li class="action-item">
+                <a href="#" class="button action-primary save-button">Save</a>
+            </li>
+        {% endif %}
+            <li class="action-item">
+                <a href="#" class="button cancel-button action-cancel">Cancel</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,181 @@
+/* CSS for MettlXBlock */
+
+.mettl_block h4{
+    font-size:1em !important;
+}
+.mettl_block h2{
+    font-size:1.2em !important;
+}
+.mettl_block .instructions table th, .mettl_block .instructions table td{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+.test_link{
+    display: inline-block;
+    margin: 0 !important;
+    cursor: auto !important;
+    color: grey !important;
+}
+.test_button_block{
+    text-align: center;
+}
+.test_button{
+    border: none;
+    border-radius: 10px;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: normal;
+    background-image: none;
+    padding: 4px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.test_button:hover{
+    border: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+[disabled].test_button{
+    background-color: grey !important;
+}
+.result-card{
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    color: #4c4c4c;
+    position: relative;
+    display: table;
+    margin-top: 10px;
+
+    height: 70px;
+}
+.result-card:hover{
+    box-shadow: 0 7px 16px 0 rgba(0,0,0,0.2);
+}
+.attempts{
+    border-right: 1px solid darkgrey;
+    width: 60px;
+    height: 100%;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.details{
+    display: inline-block;
+    height: 100%;
+    float: left;
+    padding: 10px;
+}
+.details h2,.details h4{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.details .status{
+    padding-bottom: 5px;
+}
+.details .marks{
+    padding: 0 10px 5px 0;
+}
+.details .status.to-be-taken{
+    color: orange !important;
+}
+.details .status.in-progress{
+    color: #40baec !important;
+}
+.details .status.completed{
+    color: green !important;
+}
+.resume-test{
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    padding: 5px;
+    transform: translateY(-50%);
+    padding: 10px 15px;
+    color:#FFF !important;
+}
+.resume-test:hover, .resume-test:active, .resume-test:focus{
+    background-image: none !important;
+    box-shadow: none;
+}
+.resume-test.btn-blue:hover{
+    background-color: #126f9a;
+}
+.resume-test.btn-pink:hover{
+    background-color: #d7548e;
+}
+#test_button_back_color_input, #test_button_color_input{
+    padding: 5px;
+    height: 25px;
+}
+.instructions{
+    padding: 5px;
+}
+
+/* Author View CSS */
+
+.author_table {
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+.schedule_group > td{
+    padding: 10px;
+    background-color: #b0f5bc;
+}
+.row {
+  display: table-row;
+  background: #f6f6f6;
+}
+.row:nth-of-type(odd) {
+  background: #e9e9e9;
+}
+.row.header {
+  font-weight: 900;
+  color: #ffffff;
+  background: #00accd;
+}
+.cell {
+  padding: 6px 12px;
+  display: table-cell;
+}
+
+.paging-nav {
+  text-align: right;
+  padding-top: 2px;
+}
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #91b9e6;
+  color: white;
+  border-radius: 3px;
+}
+.paging-nav .selected-page {
+  background: #187ed5;
+  font-weight: bold;
+}
+
+.loading_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+}
+.loading{
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+}

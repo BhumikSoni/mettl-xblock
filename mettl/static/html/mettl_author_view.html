@@ -1,0 +1,76 @@
+{% if not error_msg %}
+<div class="mettl_block">
+    <table class="author_table">
+        <thead>
+            <tr class="row header">
+                <th class="cell">Assessment ID</th>
+                <th class="cell">Assessment Name</th>
+                <th class="cell"># of Attempts</th>
+                <th class="cell">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row">
+                <td class="cell">{% if assessment_id %} {{ assessment_id }} {% else %} NA {% endif %}</td>
+                <td class="cell">{% if assessment_name %}{{ assessment_name }} {% else %} NA {% endif %}</td>
+                <td class="cell">{% if attempts %} {{ attempts }} {% else %} NA {% endif %}</td>
+                <td class="cell">{% if weight %} {{ weight }} {% else %} NA {% endif %}</td>
+            </tr>
+        </tbody>        
+    </table>
+    <br>
+    {% if assessment_id %}
+        {% for schedule_key, student_details in student_data.items %}
+        <h2 class="schedule_group">{{ student_details.0 }}</h2>
+        <table class="author_table student_records">
+            <thead>
+                <tr class="row header">
+                    <th class="cell">First Name</th>
+                    <th class="cell">Email Address</th>
+                    <th class="cell">Status</th>
+                    <th class="cell">Marks Obtained</th>
+                    <th class="cell">Max Marks</th>
+                    <th class="cell">End Time</th>
+                    <th class="cell">Report</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in student_details|slice:"1:" %}
+                <tr class="row">
+                    <td class="cell">{{student.first_name}}</td>
+                    <td class="cell">{{student.email}}</td>
+                    <td class="cell">{{student.status}}</td>
+                    <td class="cell">{{student.marks_obtained}}</td>
+                    <td class="cell">{{student.max_marks}}</td>
+                    <td class="cell">{{student.end_time}}</td>
+                    <td class="cell">
+                        {% if student.pdf_report != '-' %}
+                        <a href="{{student.pdf_report}}"> Download Report </a>
+                        {% else %}
+                        {{student.pdf_report}}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        {% endfor %}
+  {% endif %}
+  <div class="loading_overlay">
+      <div class="loading">
+          <h3>Please wait for a moment.<span class="dots"></span></h3>
+      </div>
+  </div>
+</div>
+{% else %}
+<div class="mettl_xblock">
+    {% if error_code == 'E403' %}
+        <div class="error-block">
+            <h3>The API key included in the script element that loads the API is invalid.</h3>
+            <h2>Contact your site administrator to set the proper API keys.</h2>
+        </div>
+    {% else %}
+        <h1>{{ error_msg }}</h1>
+    {% endif %}    
+</div>
+{% endif %}
