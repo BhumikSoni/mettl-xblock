@@ -5,22 +5,19 @@ The package provides an XBlock for use with the edX platform which provides stud
 
 Installation
 ------------
-
-`Download this XBlock <download.link>`_ to a suitable directory on your server and extract its contents (alternatively, you may clone this repository using git).
-
-#. Install your block.
-
     ::
 
-     $ vagrant ssh
-     @precise64:~$ sudo -u edxapp /edx/bin/pip.edxapp install /path/to/your/block  
+     $ sudo -H -u edxapp bash
+     $ source ~/edxapp_env
+     $ pip install git+https://github.com/Mettl/mettl.git
 
 #. After successful installation, Run following command to set your API keys,
 
     ::
 
-        $ sudo su edxapp
-        edxapp@precise64:~/edx-platform$ mettl_auth_keys
+     $ sudo -H -u edxapp bash
+     $ source ~/edxapp_env
+     $ mettl_auth_keys
 
     You will be prompted for Public Key and Private Key
 
@@ -33,7 +30,7 @@ Installation
 
 #. Enable the block.
 
-  #.  In ``edx-platform/lms/envs/common.py``, uncomment::
+  #.  In ``edx-platform/lms/envs/common.py``, uncomment (if not already)::
     
         # from xmodule.x_module import prefer_xmodules
         # XBLOCK_SELECT_FUNCTION = prefer_xmodules
