@@ -9,7 +9,7 @@ Installation
 
      $ sudo -H -u edxapp bash
      $ source ~/edxapp_env
-     $ pip install git+https://github.com/Mettl/mettl.git
+     $ pip install -e git+https://github.com/Mettl/mettl.git#egg=mettl-xblock
 
 #. After successful installation, Run following command to set your API keys,
 
@@ -50,7 +50,9 @@ Usage
   #. Add "mettl" to module list.
   #. A studio should save your changes automatically.
 
-  IMAGE
+.. image:: https://github.com/Mettl/mettl/blob/master/studio-advanced-setting.png?raw=true 
+  :width: 100%
+  :align: center
 
 2. Create a Mettl XBlock
 
@@ -59,12 +61,16 @@ Usage
  #. In the "Add New Component" interface, you should now see an "Advanced" button
  #. Click "Advanced" and choose "Mettl XBlock"
 
- IMAGE
+.. image:: https://github.com/Mettl/mettl/blob/master/studio-create-xblock-advanced.jpg?raw=true 
+  :width: 100%
+  :align: center
   
 3. Initially, the XBlock will look like below,
   
-  IMAGE
-
+.. image:: https://github.com/Mettl/mettl/blob/master/author-initial-view.png?raw=true 
+  :width: 100%
+  :align: center
+  
 4. Settings
 
 +-------------------------------+--------------------------------------------------------------------------+
@@ -81,7 +87,9 @@ Usage
 | Test Button Text Color        | Defines the text color of the test button                                |
 +-------------------------------+--------------------------------------------------------------------------+
 
-  IMAGE
+.. image:: https://github.com/Mettl/mettl/blob/master/studio-settings.png?raw=true 
+  :width: 100%
+  :align: center
 
 5. Grading Policy
 
@@ -89,7 +97,9 @@ Usage
 
 6. After settings all, XBlock will look like below,
 
-  IMAGE
+.. image:: https://github.com/Mettl/mettl/blob/master/author-xblock-view.png?raw=true 
+  :width: 100%
+  :align: center
 
 About Mettl
 -----------
