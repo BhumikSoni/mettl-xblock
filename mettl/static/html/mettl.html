@@ -20,7 +20,7 @@
                 </div>
                 <div class="details">
                     <h2>{{ schedule.schedule_name }} -</h2>
-                    <h2 class="status {% if schedule.status == 'Completed' %}completed {% elif schedule.status == 'ToBeTaken' %} to-be-taken {%else%} in-progress {% endif %}" title="{%if schedule.finish_mode %} {{schedule.finish_mode}} {% endif %}">{{ schedule.status }}</h2>
+                    <h2 class="status {% if schedule.status == 'Attempted' %}completed {% elif schedule.status == 'ToBeTaken' %} to-be-taken {%else%} in-progress {% endif %}" title="{%if schedule.finish_mode %} {{schedule.finish_mode}} {% endif %}">{{ schedule.status }}</h2>
                     <br>
                     <h4 class="marks">
                         <b>Marks :</b> {%if schedule.marks > 0 %} {{schedule.marks}}/{{schedule.max_marks}} {% else %} 0 {% endif %},
@@ -36,7 +36,7 @@
                         {% endif %}
                     </h4>
                 </div>
-                {% if schedule.status == 'Completed' %}
+                {% if schedule.status == 'Attempted' %}
                     <a href="{{ schedule.pdf_report }}" class="resume-test btn btn-pink">
                          Download Report 
                     </a>
